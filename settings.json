@@ -1,0 +1,81 @@
+{
+    // General Settings
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "files.autoSave": "onWindowChange",
+  
+    // Set up Prettier for consistent formatting
+    "prettier.singleQuote": true,
+    "prettier.trailingComma": "all",
+    "prettier.semi": false,
+    "prettier.printWidth": 80,
+    "prettier.tabWidth": 2,
+  
+    // ESLint integration
+    "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+  
+    // Docker language support (if using Docker in the project)
+    "docker.languageserver.formatter.timeout": 1000000,
+  
+    // Terminal settings
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    
+    // Workspace Theme for Spendr
+    "workbench.colorCustomizations": {
+      "titleBar.activeBackground": "#24292e",
+      "titleBar.activeForeground": "#ffffff",
+      "titleBar.inactiveBackground": "#24292e99",
+      "titleBar.inactiveForeground": "#ffffff99",
+      "activityBar.background": "#1d2024",
+      "activityBar.foreground": "#36a3d9",
+      "activityBarBadge.background": "#36a3d9",
+      "activityBarBadge.foreground": "#ffffff",
+      "statusBar.background": "#24292e",
+      "statusBar.foreground": "#ffffff",
+      "statusBar.noFolderBackground": "#24292e",
+      "statusBar.debuggingBackground": "#ff7043"
+    },
+  
+    // Git decorations
+    "git.decorations.enabled": true,
+    "git.autofetch": true,
+  
+    // TypeScript and JavaScript settings
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+  
+    // Specific settings for React and TypeScript
+    "emmet.includeLanguages": {
+      "javascript": "javascriptreact",
+      "typescript": "typescriptreact"
+    },
+    "typescript.tsserver.experimental.enableProjectDiagnostics": true,
+  
+    // Folder and file exclusions to reduce noise
+    "files.exclude": {
+      "node_modules/": true,
+      "dist/": true,
+      "build/": true,
+      "coverage/": true,
+      "**/*.log": true
+    },
+  
+    // Optional: Highlight .env files with specific colors
+    "editor.tokenColorCustomizations": {
+      "textMateRules": [
+        {
+          "scope": "source.env",
+          "settings": {
+            "foreground": "#ffcb6b",
+            "fontStyle": "italic"
+          }
+        }
+      ]
+    }
+  }
+  
