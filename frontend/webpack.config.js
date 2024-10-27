@@ -1,38 +1,51 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const config = {
+  mode: 'development',
   entry: './src/index.tsx',
   output: {
-    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
-        use: 'babel-loader',
+        test: /\.tsx?$/,
+        use: 'ts-loader',
         exclude: /node_modules/,
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          'style-loader', // Inject CSS into the DOM
+          'css-loader', // Turns CSS into CommonJS
+          'postcss-loader', // Use PostCSS for Tailwind CSS
+        ],
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: 'public/index.html',
-    }),
-  ],
+  devtool: 'inline-source-map',
   devServer: {
     static: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 3000,
+    port: 9000,
+    open: false,
+    historyApiFallback: true,
   },
-  mode: 'development',
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      inject: true,
+    }),
+  ],
 };
+
+export default config;
